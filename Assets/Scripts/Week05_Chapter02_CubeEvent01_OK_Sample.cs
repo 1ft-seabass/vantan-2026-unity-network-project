@@ -11,7 +11,7 @@ public class Week05_Chapter02_CubeEvent01_OK_Sample : MonoBehaviour, IPointerCli
 {
     // API の接続先
     // 今回は サーバーURL + /api/get を読み込む
-    string urlAPI = "https://super-duper-potato-jrw4r76996fq44x-1880.app.github.dev/sample01";
+    string urlAPI = "http://localhost:1880/sample01";
 
     // 受信した JSON データを Unity で扱うデータにする ResponseData ベースクラス
     // 中には ResponseDataItem で構成されています

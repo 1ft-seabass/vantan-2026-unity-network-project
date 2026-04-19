@@ -83,6 +83,15 @@ yarn-error.log*
 .env
 .env.*
 
+# Node-RED runtime / credentials / backups
+flows_cred.json
+.config.runtime.json
+.flows.json.backup
+.flows_cred.json.backup
+.config.runtime.json.backup
+.config.users.json.backup
+db/db.json.bak
+
 # ==============================================================================
 # Archives
 # ==============================================================================
@@ -95,4 +104,11 @@ _vantan-2025-unity-network-server/
 # ==============================================================================
 
 .wait
-docs
+.claude/
+
+# ==============================================================================
+# Security tools (downloaded by scripts/install-gitleaks.js)
+# ==============================================================================
+
+bin/gitleaks
+bin/gitleaks.exe
