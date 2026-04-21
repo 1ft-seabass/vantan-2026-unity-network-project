@@ -33,7 +33,7 @@ public class Week06_Chapter02_RankingMessage_OK_Sample : MonoBehaviour
 
     public void GetDataCore()
     {
-        StartCoroutine("GetData");
+        StartCoroutine(GetData());
     }
 
     // アクセスする URL
@@ -52,10 +52,6 @@ public class Week06_Chapter02_RankingMessage_OK_Sample : MonoBehaviour
         // 結果によって分岐
         switch (request.result)
         {
-            case UnityWebRequest.Result.InProgress:
-                Debug.Log("リクエスト中");
-                break;
-
             case UnityWebRequest.Result.Success:
                 Debug.Log("リクエスト成功");
 
@@ -87,6 +83,6 @@ public class Week06_Chapter02_RankingMessage_OK_Sample : MonoBehaviour
                 break;
         }
 
-
+        request.Dispose();
     }
 }

@@ -40,7 +40,7 @@ public class Week03_Chapter02_ClickPart : MonoBehaviour, IPointerClickHandler
         // 起動時にデータを読み込む
 
         // HTTP リクエストを非同期処理を待つためコルーチンとして呼び出す
-        StartCoroutine("RequestInit");
+        StartCoroutine(RequestInit());
 
         // 蓄積ポイントのリセット
         currentPoint = 0;
@@ -92,10 +92,6 @@ public class Week03_Chapter02_ClickPart : MonoBehaviour, IPointerClickHandler
         // 結果によって分岐
         switch (request.result)
         {
-            case UnityWebRequest.Result.InProgress:
-                Debug.Log("リクエスト中");
-                break;
-
             case UnityWebRequest.Result.Success:
                 Debug.Log("リクエスト成功");
 
@@ -111,7 +107,7 @@ public class Week03_Chapter02_ClickPart : MonoBehaviour, IPointerClickHandler
                 break;
         }
 
-
+        request.Dispose();
     }
 
     // Update is called once per frame

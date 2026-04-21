@@ -28,7 +28,7 @@ public class Week04_Chapter02_CubeEvent01 : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         // HTTP リクエストを非同期処理を待つためコルーチンとして呼び出す
-        StartCoroutine("GetAPI");
+        StartCoroutine(GetAPI());
     }
 
     // API 取得
@@ -44,10 +44,6 @@ public class Week04_Chapter02_CubeEvent01 : MonoBehaviour, IPointerClickHandler
         // 結果によって分岐
         switch (request.result)
         {
-            case UnityWebRequest.Result.InProgress:
-                Debug.Log("リクエスト中");
-                break;
-
             case UnityWebRequest.Result.Success:
                 Debug.Log("リクエスト成功");
 
@@ -58,12 +54,12 @@ public class Week04_Chapter02_CubeEvent01 : MonoBehaviour, IPointerClickHandler
                 ResponseData response = JsonUtility.FromJson<ResponseData>(request.downloadHandler.text);
 
                 // 画像読み込み
-                StartCoroutine("GetTexture",response.message);
+                StartCoroutine(GetTexture(response.message));
 
                 break;
         }
 
-
+        request.Dispose();
     }
 
     // テクスチャ読み込みb
@@ -81,10 +77,6 @@ public class Week04_Chapter02_CubeEvent01 : MonoBehaviour, IPointerClickHandler
         // 結果によって分岐
         switch (request.result)
         {
-            case UnityWebRequest.Result.InProgress:
-                Debug.Log("リクエスト中");
-                break;
-
             case UnityWebRequest.Result.Success:
                 Debug.Log("リクエスト成功");
 

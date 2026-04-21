@@ -20,7 +20,7 @@ public class Week03_Chapter03_GetImage : MonoBehaviour, IPointerClickHandler
         // マウスクリックイベント
 
         // HTTP リクエストを非同期処理を待つためコルーチンとして呼び出す
-        StartCoroutine("GetTexture");
+        StartCoroutine(GetTexture());
     }
 
     IEnumerator GetTexture()
@@ -36,10 +36,6 @@ public class Week03_Chapter03_GetImage : MonoBehaviour, IPointerClickHandler
         // 結果によって分岐
         switch (request.result)
         {
-            case UnityWebRequest.Result.InProgress:
-                Debug.Log("リクエスト中");
-                break;
-
             case UnityWebRequest.Result.Success:
                 Debug.Log("リクエスト成功");
 
@@ -50,5 +46,7 @@ public class Week03_Chapter03_GetImage : MonoBehaviour, IPointerClickHandler
 
                 break;
         }
+
+        request.Dispose();
     }
 }

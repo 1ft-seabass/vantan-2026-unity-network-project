@@ -40,7 +40,7 @@ public class Week05_Chapter03_GetAPI : MonoBehaviour
     void GetDataCore()
     {
         // HTTP リクエストを非同期処理を待つためコルーチンとして呼び出す
-        StartCoroutine("GetData");
+        StartCoroutine(GetData());
     }
 
     IEnumerator GetData()
@@ -55,10 +55,6 @@ public class Week05_Chapter03_GetAPI : MonoBehaviour
         // 結果によって分岐
         switch (request.result)
         {
-            case UnityWebRequest.Result.InProgress:
-                Debug.Log("リクエスト中");
-                break;
-
             case UnityWebRequest.Result.Success:
                 Debug.Log("リクエスト成功");
 
@@ -77,6 +73,6 @@ public class Week05_Chapter03_GetAPI : MonoBehaviour
                 break;
         }
 
-
+        request.Dispose();
     }
 }

@@ -36,7 +36,7 @@ public class Week03_Chapter02_SendButton : MonoBehaviour, IPointerClickHandler
         // Debug.Log($"オブジェクト {this.name} がクリックされたよ！");
 
         // HTTP リクエストを非同期処理を待つためコルーチンとして呼び出す
-        StartCoroutine("PostPointData");
+        StartCoroutine(PostPointData());
     }
 
     // POST リクエストする本体
@@ -73,10 +73,6 @@ public class Week03_Chapter02_SendButton : MonoBehaviour, IPointerClickHandler
         // 結果によって分岐
         switch (request.result)
         {
-            case UnityWebRequest.Result.InProgress:
-                Debug.Log("リクエスト中");
-                break;
-
             case UnityWebRequest.Result.Success:
                 Debug.Log("リクエスト成功");
 
@@ -92,5 +88,6 @@ public class Week03_Chapter02_SendButton : MonoBehaviour, IPointerClickHandler
                 break;
         }
 
+        request.Dispose();
     }
 }

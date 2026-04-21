@@ -22,7 +22,7 @@ public class Sample01_SendAPI : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         // まずスクリーンショット
-        StartCoroutine("DoScreendhot");
+        StartCoroutine(DoScreendhot());
     }
 
     IEnumerator PostLINENofify(string message)
@@ -54,10 +54,6 @@ public class Sample01_SendAPI : MonoBehaviour, IPointerClickHandler
         // 結果によって分岐
         switch (request.result)
         {
-            case UnityWebRequest.Result.InProgress:
-                Debug.Log("リクエスト中");
-                break;
-
             case UnityWebRequest.Result.ProtocolError:
                 Debug.Log("ProtocolError");
                 Debug.Log(request.responseCode);
@@ -77,7 +73,7 @@ public class Sample01_SendAPI : MonoBehaviour, IPointerClickHandler
                 break;
         }
 
-
+        request.Dispose();
     }
 
     IEnumerator DoScreendhot()
@@ -95,7 +91,7 @@ public class Sample01_SendAPI : MonoBehaviour, IPointerClickHandler
         UnityEngine.Object.Destroy(textureScreenCapture);
 
         // 第 2 引数で送りたい文言を入れる
-        StartCoroutine("PostLINENofify", "Unityからテスト");
+        StartCoroutine(PostLINENofify("Unityからテスト"));
     }
 
 

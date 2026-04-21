@@ -30,10 +30,6 @@ public class Sample02_GetAPI : MonoBehaviour
         // 結果によって分岐
         switch (request.result)
         {
-            case UnityWebRequest.Result.InProgress:
-                Debug.Log("リクエスト中");
-                break;
-
             case UnityWebRequest.Result.ConnectionError:
                 Debug.Log("ConnectionError");
                 Debug.Log(request.error);
@@ -55,5 +51,7 @@ public class Sample02_GetAPI : MonoBehaviour
 
                 break;
         }
+
+        request.Dispose();
     }
 }

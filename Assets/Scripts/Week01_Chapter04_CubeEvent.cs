@@ -16,7 +16,7 @@ public class Week01_Chapter04_CubeEvent : MonoBehaviour, IPointerClickHandler
         // Debug.Log($"オブジェクト {this.name} がクリックされた！");
 
         // HTTP GET リクエストを非同期で待つためコルーチンとして呼び出す
-        StartCoroutine("GetGitHubData");
+        StartCoroutine(GetGitHubData());
     }
 
     // GET リクエストする本体
